@@ -41,7 +41,6 @@ export default function Login() {
 
       try {
         //  API call should be here
-        // const response = await loginApi(values);
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
 

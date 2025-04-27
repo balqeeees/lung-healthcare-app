@@ -140,7 +140,7 @@ export default function ForgotPassword() {
                   type="button"
                   onClick={() => {
                     console.log("Reset initiated");
-                    formik.handleSubmit(); // optional
+                    formik.handleSubmit(); 
                   }}
                   className="text-blue-500 text-sm hover:underline focus:outline-none"
                   disabled={formik.isSubmitting}
