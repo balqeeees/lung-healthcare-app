@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -17,14 +18,41 @@ import {
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validationSchema = Yup.object({
+    id: Yup.string()
+      .required("ID is required")
+      .min(4, "ID must be at least 4 characters"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters"),
+  });
 
   const formik = useFormik({
     initialValues: {
       id: "",
       password: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
+    validationSchema,
+    onSubmit: async (values) => {
+      setIsSubmitting(true);
+      console.log("Logging in with:", values);
+
+      try {
+        //  API call should be here
+        // const response = await loginApi(values);
+
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        console.log("Login successful");
+        //  redirect here to dashboard
+      } catch (error) {
+        console.error("Login failed:", error);
+        formik.setStatus("Invalid ID or password. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     },
   });
 
@@ -55,6 +83,12 @@ export default function Login() {
               Welcome back! Please login to your account
             </p>
 
+            {formik.status && (
+              <div className="bg-red-100 border border-red-300 text-red-700 px-4 py-2 rounded-lg mb-4 text-xs sm:text-sm">
+                {formik.status}
+              </div>
+            )}
+
             <form
               onSubmit={formik.handleSubmit}
               className="space-y-4 sm:space-y-5"
@@ -65,12 +99,23 @@ export default function Login() {
                 </label>
                 <input
                   type="text"
+                  id="id"
                   name="id"
                   value={formik.values.id}
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   placeholder="Enter your ID"
-                  className="w-full p-2 sm:p-3 mt-1 border rounded-2xl bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
+                  className={`w-full p-2 sm:p-3 mt-1 border rounded-2xl bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm ${
+                    formik.touched.id && formik.errors.id
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  }`}
                 />
+                {formik.touched.id && formik.errors.id && (
+                  <div className="text-red-500 text-xs mt-1">
+                    {formik.errors.id}
+                  </div>
+                )}
               </div>
 
               <div>
@@ -80,25 +125,39 @@ export default function Login() {
                 <div className="relative">
                   <input
                     type={showPassword ? "text" : "password"}
+                    id="password"
                     name="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     placeholder="Enter your password"
-                    className="w-full p-2 sm:p-3 mt-1 border rounded-2xl bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
+                    className={`w-full p-2 sm:p-3 mt-1 border rounded-2xl bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm ${
+                      formik.touched.password && formik.errors.password
+                        ? "border-red-500"
+                        : "border-gray-300"
+                    }`}
                   />
                   <button
                     type="button"
                     className="absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-500"
                     onClick={() => setShowPassword(!showPassword)}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                   >
                     <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
                   </button>
                 </div>
+                {formik.touched.password && formik.errors.password && (
+                  <div className="text-red-500 text-xs mt-1">
+                    {formik.errors.password}
+                  </div>
+                )}
               </div>
 
               <div className="text-right">
                 <a
-                  href="#"
+                  href="/forgot-password"
                   className="text-gray-600 text-xs sm:text-sm hover:underline"
                 >
                   Forgot password?
@@ -108,16 +167,16 @@ export default function Login() {
               <div className="w-full flex justify-center">
                 <button
                   type="submit"
-                  className="w-full sm:w-48 bg-blue-600 hover:bg-blue-700 text-white p-2 sm:p-3 rounded-2xl font-medium text-sm"
+                  disabled={isSubmitting || !formik.isValid}
+                  className="w-full sm:w-48 bg-blue-600 hover:bg-blue-700 text-white p-2 sm:p-3 rounded-2xl font-medium text-sm transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
                 >
-                  Login
+                  {isSubmitting ? "Logging in..." : "Login"}
                 </button>
               </div>
             </form>
           </div>
         </div>
 
-        {/* Image Section */}
         <div className="flex w-full md:w-1/2 justify-center items-center p-4 sm:p-6 lg:p-7 order-1 md:order-2">
           <div className="text-center">
             <img
@@ -132,10 +191,8 @@ export default function Login() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-[#97ADC8] border-t py-4 sm:py-6 px-4 sm:px-8 text-gray-700 text-xs sm:text-sm">
         <div className="max-w-7xl mx-auto flex flex-col space-y-6 sm:space-y-8 lg:space-y-0 lg:flex-row lg:justify-between lg:items-start">
-          {/* Logo */}
           <div className="flex items-center justify-center lg:justify-start space-x-3">
             <img
               src="/logo-preview.png"
