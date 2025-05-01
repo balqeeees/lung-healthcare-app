@@ -27,6 +27,8 @@ function TechnicianPage() {
     pftResult: Yup.string().required("Required"),
     isSmoker: Yup.string().required("Required"),
     password: Yup.string().min(6, "Too Short!").required("Required"),
+    bloodType: Yup.string().required("Required"),
+    DOB: Yup.string().required("Required"),
   });
 
   const ImageSchema = Yup.object().shape({
@@ -206,6 +208,8 @@ function TechnicianPage() {
               pftResult: "",
               isSmoker: "",
               password: "",
+              bloodType: "",
+              DOB: "",
             }}
             validationSchema={PatientSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -321,7 +325,32 @@ function TechnicianPage() {
                     className="text-red-500 text-xs mt-1"
                   />
                 </div>
-
+                <div className="flex flex-col">
+                  <Field
+                    type="text"
+                    name="bloodType"
+                    placeholder="Blood Type"
+                    className="input p-2 border rounded"
+                  />
+                  <ErrorMessage
+                    name="bloodType"
+                    component="div"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <Field
+                    type="Date"
+                    name="DOB"
+                    placeholder="Date Of Birth"
+                    className="input p-2 border rounded"
+                  />
+                  <ErrorMessage
+                    name="DOB"
+                    component="div"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
                 <div className="flex flex-col">
                   <Field
                     as="select"
