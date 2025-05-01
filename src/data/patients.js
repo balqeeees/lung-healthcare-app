@@ -7,6 +7,8 @@ export const PATIENTS = {
     bloodType: "O+",
     email: "Ali.Sami@example.com",
     contact: "+1 (555) 123-4567",
+    isSmoker: false,
+    PFT: 0.25,
     images: [
       {
         url: "https://via.placeholder.com/300x200?text=Histopathology+1",
@@ -71,6 +73,9 @@ export const PATIENTS = {
     bloodType: "A-",
     email: "Asim.Mohamed@example.com",
     contact: "+1 (555) 765-4321",
+    isSmoker: true,
+    PFT: 0.8,
+
     images: [
       {
         url: "https://via.placeholder.com/300x200?text=Histopathology+2",
@@ -101,6 +106,9 @@ export const PATIENTS = {
     gender: "Male",
     birthdate: "1992-07-08",
     bloodType: "B+",
+    isSmoker: false,
+    PFT: 0.899,
+
     email: "Abdelrahman.Ali@example.com",
     contact: "+1 (555) 678-9101",
     images: [

@@ -2,6 +2,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone } from "lucide-react";
 import { calculateAge } from "@/utils/patientUtils";
+import { Activity } from "lucide-react";
+
 
 export default function PatientSummary({ patient }) {
   if (!patient) return null;
@@ -34,6 +36,10 @@ export default function PatientSummary({ patient }) {
                 <Phone size={14} className="mr-1" />
                 <span>{patient.contact}</span>
               </div>
+              <div className="mt-1 flex items-center text-sm text-gray-500">
+                <Activity size={14} className="mr-1" />
+                <span>{patient.PFT}</span>
+              </div>
             </div>
           </div>
 
@@ -55,8 +61,14 @@ export default function PatientSummary({ patient }) {
                 {patient.gender}
               </div>
             </div>
-
-          
+            <div className="p-3 bg-teal-50 rounded-lg text-center min-w-28">
+              <div className="text-xs uppercase text-teal-400 font-medium mb-1">
+                Is Smoker?
+              </div>
+              <div className="text-lg font-semibold text-teal-700">
+                {patient.isSmoker ? "Yes" : "No"}
+              </div>
+            </div>
           </div>
         </div>
       </CardContent>
