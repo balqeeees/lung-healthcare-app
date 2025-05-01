@@ -9,7 +9,7 @@ export default function StatCards() {
       description: "appointments this week",
       changePercent: "+15%",
       changeDescription: "vs last week",
-      bgColor: "bg-blue-500"
+      bgColor: "bg-blue-500",
     },
     {
       title: "Cancelled",
@@ -17,16 +17,16 @@ export default function StatCards() {
       description: "appointments",
       changePercent: "-10%",
       changeDescription: "vs last week",
-      bgColor: "bg-blue-700"
+      bgColor: "bg-blue-700",
     },
     {
-      title: "New Issue Images",
+      title: "New Tissue  Images",
       value: "18",
       description: "",
       changePercent: "+32%",
       changeDescription: "vs last week",
-      bgColor: "bg-blue-900"
-    }
+      bgColor: "bg-blue-900",
+    },
   ];
 
   return (
