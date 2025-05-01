@@ -126,4 +126,35 @@ export const PATIENTS = {
     ],
     reports: [],
   },
+  4: {
+    id: 4,
+    name: "Salma Ali",
+    gender: "Female",
+    birthdate: "1972-07-08",
+    bloodType: "A+",
+    email: "Salma.Ali@example.com",
+    contact: "+1 (555) 678-9101",
+    images: [
+      {
+        url: "https://via.placeholder.com/300x200?text=Histopathology+3",
+        label: "Histopathology - Lung Sample 3",
+        date: "2024-06-22",
+        details: {
+          benign: 0.1,
+          adenocarcinoma: 0.05,
+          squamousCellCarcinoma: 0.8,
+          result: "Squamous Cell Carcinoma",
+        },
+      },
+    ],
+    appointments: [{ date: "2025-05-10", day: "Saturday", time: "9:00 AM" }],
+    visits: [
+      {
+        date: "2025-01-25",
+        diagnosis: "Pneumonia",
+        notes: "Antibiotics prescribed, advised rest",
+      },
+    ],
+    reports: [],
+  },
 };

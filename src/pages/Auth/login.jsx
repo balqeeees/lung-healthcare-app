@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import { users } from "@/data/users";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -29,31 +31,46 @@ export default function Login() {
       .min(6, "Password must be at least 6 characters"),
   });
 
-  const formik = useFormik({
-    initialValues: {
-      id: "",
-      password: "",
-    },
-    validationSchema,
-    onSubmit: async (values) => {
-      setIsSubmitting(true);
-      console.log("Logging in with:", values);
+ const navigate = useNavigate();
 
-      try {
-        //  API call should be here
+ const formik = useFormik({
+   initialValues: {
+     id: "",
+     password: "",
+   },
+   validationSchema,
+ onSubmit: async (values) => {
+  setIsSubmitting(true);
 
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+  // Simulate delay
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        console.log("Login successful");
-        //  redirect here to dashboard
-      } catch (error) {
-        console.error("Login failed:", error);
-        formik.setStatus("Invalid ID or password. Please try again.");
-      } finally {
-        setIsSubmitting(false);
-      }
-    },
-  });
+  // Check if user exists
+  const user = users.find(
+    (u) => u.id === values.id && u.password === values.password
+  );
+
+  if (!user) {
+    formik.setStatus("Invalid ID or password. Please try again.");
+    setIsSubmitting(false);
+    return;
+  }
+
+  // Navigate based on role
+  if (user.role === "doctor") {
+    navigate("/doctor/dashboard");
+  } else if (user.role === "technician") {
+    navigate("/technician");
+  } else if (user.role === "patient") {
+    navigate("/patient");
+  }
+
+  setIsSubmitting(false);
+},
+
+ 
+ });
+
 
   return (
     <div className="flex flex-col bg-gradient-to-b from-white to-[#A7C7F0] min-h-screen">
