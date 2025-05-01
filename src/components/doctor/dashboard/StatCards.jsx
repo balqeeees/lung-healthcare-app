@@ -1,4 +1,3 @@
-// StatCards.jsx
 import { Card, CardContent } from "@/components/ui/card";
 import StatCard from "./StatCard";
 

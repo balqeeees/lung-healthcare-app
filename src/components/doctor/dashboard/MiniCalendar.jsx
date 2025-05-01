@@ -6,7 +6,7 @@ export default function MiniCalendar({
   handleDayClick,
   selectedDay,
 }) {
-  const [currentMonth, setCurrentMonth] = useState(3); // April (0-indexed)
+  const [currentMonth, setCurrentMonth] = useState(3); 
   const [currentYear, setCurrentYear] = useState(2025);
 
   const months = [

@@ -1,4 +1,3 @@
-// SidebarNavItem.jsx
 import { ChevronUp, ChevronDown } from "lucide-react";
 
 export default function SidebarNavItem({ 

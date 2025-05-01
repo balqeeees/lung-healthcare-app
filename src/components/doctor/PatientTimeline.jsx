@@ -1,4 +1,3 @@
-// src/components/doctor/PatientTimeline.jsx
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Activity, Clock } from "lucide-react";
 

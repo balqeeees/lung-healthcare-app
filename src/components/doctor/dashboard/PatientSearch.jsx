@@ -1,4 +1,3 @@
-// PatientSearch.jsx
 import { useState, useRef } from "react";
 import { Search } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";

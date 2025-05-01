@@ -1,4 +1,3 @@
-// src/pages/doctor/PatientDetails.jsx
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { User } from "lucide-react";

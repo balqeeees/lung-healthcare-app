@@ -1,4 +1,3 @@
-// src/components/doctor/LatestScan.jsx
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText } from "lucide-react";
 

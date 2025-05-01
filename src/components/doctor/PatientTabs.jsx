@@ -21,7 +21,7 @@ export default function PatientTabs({
   onNewReport,
   onImageUpload,
 }) {
-  const fileInputRef = useRef(null); // for triggering the file input
+  const fileInputRef = useRef(null); 
 
   const handleImageUploadClick = () => {
     fileInputRef.current?.click();
@@ -68,7 +68,6 @@ export default function PatientTabs({
         </TabsTrigger>
       </TabsList>
 
-      {/* Overview Tab */}
       <TabsContent value="overview" className="m-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="col-span-2 space-y-6">
@@ -81,7 +80,6 @@ export default function PatientTabs({
         </div>
       </TabsContent>
 
-      {/* Reports Tab */}
       <TabsContent value="reports" className="m-0">
         <Card className="bg-white shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -158,7 +156,6 @@ export default function PatientTabs({
         </Card>
       </TabsContent>
 
-      {/* Images Tab */}
       <TabsContent value="images" className="m-0">
         <Card className="bg-white shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -195,7 +192,6 @@ export default function PatientTabs({
                       className="h-48 w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
                     />
 
-                    {/* Hover Info Panel */}
                     <div className="absolute inset-0 bg-white/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center px-5 py-4">
                       <div className="text-gray-800 text-sm font-semibold mb-2">
                         Diagnostic Probabilities

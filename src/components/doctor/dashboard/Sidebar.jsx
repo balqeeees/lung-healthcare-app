@@ -1,4 +1,3 @@
-// Sidebar.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -63,7 +62,6 @@ export default function Sidebar({
         </button>
       </div>
 
-      {/* Navigation */}
       <div className="flex-1 pt-4 px-3">
         <SidebarNavItem
           icon={<Home size={20} />}

@@ -1,4 +1,3 @@
-// src/components/doctor/PatientSummary.jsx
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Mail, Phone } from "lucide-react";

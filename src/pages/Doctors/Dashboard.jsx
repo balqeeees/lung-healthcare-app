@@ -1,4 +1,3 @@
-// Dashboard.jsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu } from "lucide-react";
@@ -6,7 +5,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// Import components
 import Sidebar from "@/components/doctor/dashboard/Sidebar";
 import StatCards from "@/components/doctor/dashboard/StatCards";
 import VisitList from "@/components/doctor/dashboard/VisitList";

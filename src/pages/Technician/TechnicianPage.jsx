@@ -66,12 +66,10 @@ function TechnicianPage() {
             }}
             validationSchema={DoctorSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
-              // Handle form submission
               console.log("Doctor form values:", values);
               setTimeout(() => {
                 setSubmitting(false);
                 resetForm();
-                // Here you would typically send the data to your backend
               }, 500);
             }}
           >
@@ -211,12 +209,10 @@ function TechnicianPage() {
             }}
             validationSchema={PatientSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
-              // Handle form submission
               console.log("Patient form values:", values);
               setTimeout(() => {
                 setSubmitting(false);
                 resetForm();
-                // Here you would typically send the data to your backend
               }, 500);
             }}
           >

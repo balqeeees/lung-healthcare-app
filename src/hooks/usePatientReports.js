@@ -1,4 +1,3 @@
-// src/hooks/usePatientReports.js
 import { useState, useEffect } from "react";
 
 export default function usePatientReports(patientId) {
@@ -6,7 +5,6 @@ export default function usePatientReports(patientId) {
 
   useEffect(() => {
     if (patientId) {
-      // fetch from an API
       setPatientReports([
         {
           id: 1,

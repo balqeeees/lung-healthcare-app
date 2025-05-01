@@ -12,14 +12,12 @@ const PatientReports = ({ patient, patientReports, setPatientReports }) => {
 
   const handleSaveReport = () => {
     if (!reportTitle.trim() || !reportContent.trim()) {
-      // You might want to add error handling for empty fields
       alert("Please provide both a title and content for the report");
       return;
     }
 
-    // Create a new report object
     const newReport = {
-      id: Date.now(), // Use timestamp as a simple unique ID
+      id: Date.now(), 
       title: reportTitle,
       content: reportContent,
       date: new Date().toLocaleDateString("en-US", {
@@ -27,7 +25,7 @@ const PatientReports = ({ patient, patientReports, setPatientReports }) => {
         month: "long",
         day: "numeric",
       }),
-      doctorName: "Dr. You", // In a real app, this would be the logged-in doctor
+      doctorName: "Dr. ", 
     };
 
     setPatientReports((prevReports) => [newReport, ...prevReports]);

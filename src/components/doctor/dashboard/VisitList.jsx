@@ -5,14 +5,12 @@ import { Search } from "lucide-react";
 import MiniCalendar from "./MiniCalendar";
 import { VISITS } from "@/data/constants";
 
-// Constants
-const MONTH = 3; // April
+const MONTH = 3;
 const CALENDAR_DAYS = Array.from({ length: 31 }, (_, i) => ({
   day: i + 1,
   appointments: Math.floor(Math.random() * 5),
 }));
 
-// Helpers
 const getDayName = (dayNumber) => {
   const days = [
     "Sunday",
@@ -96,7 +94,7 @@ export default function VisitList({ selectedDay, handleDayClick }) {
         </div>
       </div>
 
-      {/* Search Bar */}
+
       <div className="relative mb-6">
         <div className="absolute inset-y-0 left-3 flex items-center text-gray-400">
           <Search className="h-5 w-5" />
@@ -110,7 +108,7 @@ export default function VisitList({ selectedDay, handleDayClick }) {
         />
       </div>
 
-      {/* Visit Cards */}
+    
       {filteredVisits.length === 0 ? (
         <div className="text-center py-12 text-gray-400">
           No visits found for your selection
