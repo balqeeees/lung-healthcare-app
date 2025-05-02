@@ -25,7 +25,7 @@ export default function Login() {
   const validationSchema = Yup.object({
     id: Yup.string()
       .required("ID is required")
-      .min(4, "ID must be at least 4 characters"),
+      .min(1, "ID must be at least 4 characters"),
     password: Yup.string()
       .required("Password is required")
       .min(6, "Password must be at least 6 characters"),
@@ -42,28 +42,27 @@ export default function Login() {
  onSubmit: async (values) => {
   setIsSubmitting(true);
 
-  // Simulate delay
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  // Check if user exists
   const user = users.find(
     (u) => u.id === values.id && u.password === values.password
   );
 
-  if (!user) {
-    formik.setStatus("Invalid ID or password. Please try again.");
-    setIsSubmitting(false);
-    return;
-  }
+  if (user) {
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      
+      if (user.role === "doctor") {
+        navigate("/doctor/dashboard");
+      } else if (user.role === "technician") {
+        navigate("/technician");
+      } else if (user.role === "patient") {
+        navigate(`/patient/${user.id}`);
+      }
+  } else {
+    return ""
+    }
+  
 
-  // Navigate based on role
-  if (user.role === "doctor") {
-    navigate("/doctor/dashboard");
-  } else if (user.role === "technician") {
-    navigate("/technician");
-  } else if (user.role === "patient") {
-    navigate("/patient");
-  }
 
   setIsSubmitting(false);
 },
@@ -220,7 +219,6 @@ export default function Login() {
             </span>
           </div>
 
-          {/* Contact Info */}
           <div className="flex flex-col items-center lg:items-start">
             <div className="font-medium text-sm sm:text-base text-center mb-2 sm:mb-3">
               Contact Us:
@@ -248,7 +246,6 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Social Media */}
           <div className="flex flex-col items-center lg:items-start space-y-2">
             <div className="font-semibold text-sm sm:text-base">Follow Us:</div>
             <div className="flex space-x-4">

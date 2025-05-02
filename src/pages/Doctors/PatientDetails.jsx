@@ -10,6 +10,7 @@ import PatientHeader from "@/components/doctor/PatientHeader";
 import ReportDialog from "@/components/doctor/PatientReports/ReportDialog";
 import PatientTabs from "@/components/doctor/PatientTabs";
 import PatientSummary from "@/components/doctor/PatientSummary";
+import { Home } from "lucide-react";
 
 
 import { PATIENTS } from "@/data/patients";
@@ -56,6 +57,7 @@ useEffect(() => {
         selectedPatientId={Number(id)}
         isMobile={isMobile}
       />
+  
 
       <main className="flex-1 flex flex-col overflow-auto">
         <PatientHeader
@@ -64,7 +66,8 @@ useEffect(() => {
           sidebarOpen={sidebarOpen}
           isMobile={isMobile}
           onNewReport={() => setReportDialogOpen(true)}
-        />
+        ></PatientHeader>
+
         <PatientSummary patient={patient} />
 
         {patient ? (

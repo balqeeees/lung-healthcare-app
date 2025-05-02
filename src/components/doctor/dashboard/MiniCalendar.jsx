@@ -6,7 +6,7 @@ export default function MiniCalendar({
   handleDayClick,
   selectedDay,
 }) {
-  const [currentMonth, setCurrentMonth] = useState(3); 
+  const [currentMonth, setCurrentMonth] = useState(3);
   const [currentYear, setCurrentYear] = useState(2025);
 
   const months = [
@@ -62,7 +62,7 @@ export default function MiniCalendar({
     const week = [];
     for (let j = 0; j < 7; j++) {
       if ((i === 0 && j < firstDayOfMonth) || dayCounter > daysInMonth) {
-        week.push(null); 
+        week.push(null);
       } else {
         const currentDay = dayCounter;
         const dayInfo = calendarDays.find((d) => d.day === currentDay) || {
@@ -97,7 +97,6 @@ export default function MiniCalendar({
         </button>
       </div>
 
-      {/* Day labels */}
       <div className="grid grid-cols-7 gap-1 mb-2">
         {days.map((day) => (
           <div

@@ -1,6 +1,8 @@
 import { Menu, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
+import { Home } from "lucide-react";
 
 export default function PatientHeader({
   patient,
@@ -8,7 +10,10 @@ export default function PatientHeader({
   sidebarOpen,
   isMobile,
   onNewReport,
-}) {
+})
+{
+    const navigate = useNavigate();
+
   return (
     <header className="h-16 border-b border-gray-200 px-4 py-8 md:px-6 flex items-center justify-between bg-white top-0 z-10 shadow-sm">
       <div className="flex items-center">
@@ -38,13 +43,21 @@ export default function PatientHeader({
 
       {patient && (
         <div className="flex gap-2">
-          <Button
-            className="text-sm bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1"
-            onClick={onNewReport}
+          {onNewReport && (
+            <Button
+              className="text-sm bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1"
+              onClick={onNewReport}
+            >
+              <Edit size={14} />
+              <span className="hidden md:inline">Write Report</span>
+            </Button>
+          )}
+          <button
+            onClick={() => navigate("/")}
+            className="text-blue-500 hover:text-blue-700"
           >
-            <Edit size={14} />
-            <span className="hidden md:inline">Write Report</span>
-          </Button>
+            <Home size={20} />
+          </button>
         </div>
       )}
     </header>

@@ -22,6 +22,7 @@ export default function AppRoutes() {
 
         <Route path="/technician" element={<TechnicianPage />} />
 
+        <Route path="/patient/:id" element={<PatientPage />} />
         <Route path="/patient" element={<PatientPage />} />
       </Routes>
     </Router>

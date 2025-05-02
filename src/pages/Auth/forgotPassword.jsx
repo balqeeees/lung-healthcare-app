@@ -17,7 +17,6 @@ export default function ForgotPassword() {
     validationSchema,
     onSubmit: (values) => {
       console.log("Submitting:", values);
-      //  API call should be here
       setIsSubmitted(true);
     },
   });

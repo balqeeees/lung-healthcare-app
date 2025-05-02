@@ -49,9 +49,7 @@ const ReportItem = ({ report }) => {
             {report.content}
           </div>
         </div>
-        <DialogFooter>
-          <Button className="bg-blue-600 hover:bg-blue-700">Print</Button>
-        </DialogFooter>
+      
       </DialogContent>
     </Dialog>
   );

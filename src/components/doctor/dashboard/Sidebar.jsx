@@ -45,7 +45,6 @@ export default function Sidebar({
       className={`transition-all duration-300 bg-white border-r border-gray-100
     ${sidebarOpen ? "w-64" : "w-16"} flex flex-col z-20 h-full`}
     >
-      {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-blue-500 text-white">
         <div
           className={`transition-all duration-300 overflow-hidden ${

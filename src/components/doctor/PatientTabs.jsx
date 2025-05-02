@@ -84,14 +84,16 @@ export default function PatientTabs({
         <Card className="bg-white shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-lg">Medical Reports</CardTitle>
-            <Button
-              className="bg-blue-600 hover:bg-blue-700"
-              size="sm"
-              onClick={onNewReport}
-            >
-              <Plus size={14} className="mr-1" />
-              New Report
-            </Button>
+            {onNewReport && typeof onNewReport === "function" && (
+              <Button
+                className="bg-blue-600 hover:bg-blue-700"
+                size="sm"
+                onClick={onNewReport}
+              >
+                <Plus size={14} className="mr-1" />
+                New Report
+              </Button>
+            )}
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -138,11 +140,7 @@ export default function PatientTabs({
                           {report.content}
                         </div>
                       </div>
-                      <DialogFooter>
-                        <Button className="bg-blue-600 hover:bg-blue-700">
-                          Print
-                        </Button>
-                      </DialogFooter>
+                      <DialogFooter></DialogFooter>
                     </DialogContent>
                   </Dialog>
                 ))
@@ -168,14 +166,25 @@ export default function PatientTabs({
                 className="hidden"
                 onChange={handleImageChange}
               />
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleImageUploadClick}
-              >
-                <FileUp size={14} className="mr-1" />
-                Upload Image
-              </Button>
+              {onImageUpload && typeof onImageUpload === "function" && (
+                <>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleImageChange}
+                  />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleImageUploadClick}
+                  >
+                    <FileUp size={14} className="mr-1" />
+                    Upload Image
+                  </Button>
+                </>
+              )}
             </div>
           </CardHeader>
           <CardContent>

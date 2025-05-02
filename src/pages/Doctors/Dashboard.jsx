@@ -58,12 +58,7 @@ export default function Dashboard() {
               Good Day Dr Ahmad
             </h1>
           </div>
-          <button
-            onClick={() => navigate("/")}
-            className="text-blue-500 hover:text-blue-700"
-          >
-            <Home size={20} />
-          </button>
+       
         </div>
 
         <StatCards />
