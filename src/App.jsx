@@ -10,9 +10,7 @@ function App() {
 
   return (
     <AppRoutes />
-    // <Router>
-    //   {/* <Dashboard /> */}
-    // </Router>
+
   );
 }
 
