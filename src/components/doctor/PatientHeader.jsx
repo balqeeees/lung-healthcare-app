@@ -10,9 +10,8 @@ export default function PatientHeader({
   sidebarOpen,
   isMobile,
   onNewReport,
-})
-{
-    const navigate = useNavigate();
+}) {
+  const navigate = useNavigate();
 
   return (
     <header className="h-16 border-b border-gray-200 px-4 py-8 md:px-6 flex items-center justify-between bg-white top-0 z-10 shadow-sm">
@@ -53,7 +52,7 @@ export default function PatientHeader({
             </Button>
           )}
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/doctor/dashboard")}
             className="text-blue-500 hover:text-blue-700"
           >
             <Home size={20} />
